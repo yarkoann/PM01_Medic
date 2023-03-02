@@ -4,6 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     tools:context=".AuthActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="80dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/auth_hello" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="23dp"
+                android:text="Добро пожаловать!"
+                android:textColor="#000"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Войдите, чтобы пользоваться функциями приложения"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginTop="64dp"
+            android:text="Вход по E-mail" />
+
+        <EditText
+            android:id="@+id/loginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/input"
+            android:hint="example@mail.ru"
+            android:paddingLeft="14dp"
+            />
+
+        <Button
+            android:id="@+id/sendEmail"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@drawable/button"
+            android:text="Далее"
+            android:textSize="17dp"
+            android:layout_marginTop="32dp"
+            app:backgroundTint="#00FFFFFF"
+            app:backgroundTintMode="add" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Или войдите с помощью"
+            android:textSize="15dp"
+            android:textColor="#939396"
+            android:layout_marginTop="125dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/signInYandex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Войти с Яндекс"
+            android:layout_marginTop="34dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:gravity="center"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
