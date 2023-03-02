@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -78,7 +79,9 @@ public class OnBoardActivity extends AppCompatActivity {
 
     public void nextBtn(int position) {
         if(position == 2) {
-            Toast.makeText(this, "Уходим на авторизацию", Toast.LENGTH_SHORT).show();
+            Intent auth = new Intent(this, AuthActivity.class);
+            startActivity(auth);
+            finish();
         }
         onBoardListElement.beginFakeDrag();
         onBoardListElement.fakeDragBy(-800f);
