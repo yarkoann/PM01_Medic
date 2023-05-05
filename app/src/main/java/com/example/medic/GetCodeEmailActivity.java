@@ -125,7 +125,8 @@ public class GetCodeEmailActivity extends AppCompatActivity {
 
                         if(isCurrentCode) {
                             Toast.makeText(GetCodeEmailActivity.this, "Все верно", Toast.LENGTH_SHORT).show();
-//                                                        Intent create_password = new Intent(this, GetCodeEmailActivity);
+                            Intent create_password = new Intent(GetCodeEmailActivity.this, CreatePasswordActivity.class);
+                            startActivity(create_password);
                         } else {
                             Toast.makeText(GetCodeEmailActivity.this, "Неверно введен код", Toast.LENGTH_SHORT).show();
                             goEmail();
