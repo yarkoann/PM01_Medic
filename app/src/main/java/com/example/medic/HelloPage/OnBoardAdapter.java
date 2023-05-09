@@ -1,4 +1,4 @@
-package com.example.medic;
+package com.example.medic.HelloPage;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

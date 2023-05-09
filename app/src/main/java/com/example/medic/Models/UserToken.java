@@ -1,6 +1,6 @@
-package com.example.medic;
+package com.example.medic.Models;
 
-public class EmailCode {
+public class UserToken {
     private String token;
 
     public String getToken() {

@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.example.medic.Models.UserToken;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -154,12 +154,12 @@ public class GetCodeEmailActivity extends AppCompatActivity {
         String userCode = code1.getText().toString() + code2.getText().toString() + code3.getText().toString() + code4.getText().toString();
 
         MedicApi api = MedicApi.retrofit.create(MedicApi.class);
-        Call<EmailCode> call = api.signIn(email, Integer.parseInt(userCode));
-        call.enqueue(new Callback<EmailCode>() {
+        Call<UserToken> call = api.signIn(email, Integer.parseInt(userCode));
+        call.enqueue(new Callback<UserToken>() {
             @Override
-            public void onResponse(@NonNull Call<EmailCode> call, @NonNull Response<EmailCode> response) {
+            public void onResponse(@NonNull Call<UserToken> call, @NonNull Response<UserToken> response) {
                 if (response.isSuccessful()) {
-                    EmailCode token = response.body();
+                    UserToken token = response.body();
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString("token", token.getToken());
                     editor.apply();
@@ -167,7 +167,7 @@ public class GetCodeEmailActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<EmailCode> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<UserToken> call, @NonNull Throwable t) {
                 Toast.makeText(GetCodeEmailActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("ErrorCode", ""+t.getMessage());
             }

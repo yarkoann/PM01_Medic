@@ -20,7 +20,7 @@
             android:name=".PasswordAppActivity"
             android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".MainPage.MainActivity"
             android:exported="false" />
         <activity
             android:name=".CreatePasswordActivity"
@@ -32,7 +32,7 @@
             android:name=".AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".OnBoardActivity"
+            android:name=".HelloPage.OnBoardActivity"
             android:exported="false" />
         <activity
             android:name=".LauncherActivity"

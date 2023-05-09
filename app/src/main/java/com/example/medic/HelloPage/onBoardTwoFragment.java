@@ -1,4 +1,4 @@
-package com.example.medic;
+package com.example.medic.HelloPage;
 
 import android.os.Bundle;
 
@@ -11,17 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.medic.R;
 
-public class onBoardThreeFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link onBoardTwoFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class onBoardTwoFragment extends Fragment {
 
     private ImageView mImageView;
     private int mImageId;
 
-    public onBoardThreeFragment() {
+    public onBoardTwoFragment() {
     }
 
-    public static onBoardThreeFragment newInstance(int imageId) {
-        onBoardThreeFragment fragment = new onBoardThreeFragment();
+    // TODO: Rename and change types and number of parameters
+    public static onBoardTwoFragment newInstance(int imageId) {
+        onBoardTwoFragment fragment = new onBoardTwoFragment();
         Bundle args = new Bundle();
         args.putInt("image_id", imageId);
         fragment.setArguments(args);
@@ -38,8 +45,8 @@ public class onBoardThreeFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_on_board_three, container, false);
-        mImageView = view.findViewById(R.id.imageFrag3);
+        View view = inflater.inflate(R.layout.fragment_on_board_two, container, false);
+        mImageView = view.findViewById(R.id.imageFrag2);
         mImageView.setImageResource(mImageId);
         return view;
     }

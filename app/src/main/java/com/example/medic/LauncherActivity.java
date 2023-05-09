@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 
+import com.example.medic.HelloPage.OnBoardActivity;
+
  public class LauncherActivity extends AppCompatActivity {
 
     @Override
@@ -19,7 +21,7 @@ import android.preference.PreferenceManager;
             @Override
             public void run() {
                 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(LauncherActivity.this);
-                if (sharedPref.contains("token")){
+                if (sharedPref.contains("token") && sharedPref.contains("pin")){
                     Intent main = new Intent(LauncherActivity.this, PasswordAppActivity.class);
                     startActivity(main);
                     finish();

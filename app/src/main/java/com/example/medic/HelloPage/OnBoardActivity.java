@@ -1,16 +1,15 @@
-package com.example.medic;
+package com.example.medic.HelloPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.medic.AuthActivity;
+import com.example.medic.R;
 
 import java.util.ArrayList;
 import java.util.List;

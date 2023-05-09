@@ -1,4 +1,4 @@
-package com.example.medic;
+package com.example.medic.MainPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
+import com.example.medic.MainPage.Analys;
+import com.example.medic.MainPage.Helps;
+import com.example.medic.MainPage.Profile;
+import com.example.medic.MainPage.Results;
+import com.example.medic.R;
 import com.example.medic.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
