@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.medic.MedicApi;
+import com.example.medic.Models.News;
 import com.example.medic.R;
 
 import java.util.List;
@@ -30,11 +31,11 @@ public class Analys extends Fragment {
 
     private void setNews() {
         MedicApi api = MedicApi.retrofit.create(MedicApi.class);
-        Call<List<NewsModel>> call = api.getNews();
-        call.enqueue(new Callback<List<NewsModel>>() {
+        Call<List<News>> call = api.getNews();
+        call.enqueue(new Callback<List<News>>() {
             @Override
-            public void onResponse(Call<List<NewsModel>> call, Response<List<NewsModel>> response) {
-                List<NewsModel> news = response.body();
+            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+                List<News> news = response.body();
                 if (response.isSuccessful()) {
                     assert news != null;
                     Log.d("JJJJ", "Проверка: "+news.get(1).getName());
@@ -42,7 +43,7 @@ public class Analys extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<NewsModel>> call, Throwable t) {
+            public void onFailure(Call<List<News>> call, Throwable t) {
 
             }
         });

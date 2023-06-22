@@ -1,6 +1,6 @@
-package com.example.medic.MainPage;
+package com.example.medic.Models;
 
-public class NewsModel {
+public class News {
     public Integer id;
     public String name;
     public String description;
