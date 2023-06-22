@@ -40,11 +40,19 @@ public class GetCodeEmailActivity extends AppCompatActivity {
     //если правильно введен результат
     private boolean isCurrentCode = false;
 
+    String email;
+    Integer emailCode;
+
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_code_email);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        email = sharedPref.getString("email", "");
+        emailCode = sharedPref.getInt("code", 9);
 
         code1 = findViewById(R.id.codeEmail1);
         code2 = findViewById(R.id.codeEmail2);
@@ -60,6 +68,8 @@ public class GetCodeEmailActivity extends AppCompatActivity {
         code3.addTextChangedListener(watcher);
         code4.addTextChangedListener(watcher);
 
+        setAutoCodeEmail();
+
         // установка по умолчанию
         showKeyboard(code1);
 
@@ -70,6 +80,13 @@ public class GetCodeEmailActivity extends AppCompatActivity {
             goEmail();
         });
 
+    }
+
+    private void setAutoCodeEmail() {
+        code1.setText(String.valueOf(emailCode));
+        code2.setText(String.valueOf(emailCode));
+        code3.setText(String.valueOf(emailCode));
+        code4.setText(String.valueOf(emailCode));
     }
 
     private void goEmail() {
@@ -148,13 +165,10 @@ public class GetCodeEmailActivity extends AppCompatActivity {
     };
 
     private boolean checkCode() {
-
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        String email = sharedPref.getString("email", "");
-        String userCode = code1.getText().toString() + code2.getText().toString() + code3.getText().toString() + code4.getText().toString();
+//        String userCode = code1.getText().toString() + code2.getText().toString() + code3.getText().toString() + code4.getText().toString();
 
         MedicApi api = MedicApi.retrofit.create(MedicApi.class);
-        Call<UserToken> call = api.signIn(email, Integer.parseInt(userCode));
+        Call<UserToken> call = api.signIn(email, emailCode);
         call.enqueue(new Callback<UserToken>() {
             @Override
             public void onResponse(@NonNull Call<UserToken> call, @NonNull Response<UserToken> response) {
