@@ -60,7 +60,7 @@
             android:text="Вход по E-mail" />
 
         <EditText
-            android:id="@+id/loginEmail"
+            android:id="@+id/createName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/input"

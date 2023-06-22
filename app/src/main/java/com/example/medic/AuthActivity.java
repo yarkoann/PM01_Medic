@@ -33,7 +33,7 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
         sendEmail = findViewById(R.id.sendEmail);
-        emailUser = findViewById(R.id.loginEmail);
+        emailUser = findViewById(R.id.createName);
         authWithYandex = findViewById(R.id.signInYandex);
 
         sendEmail.setEnabled(false);
