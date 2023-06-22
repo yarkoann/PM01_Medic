@@ -1,7 +1,10 @@
 package com.example.medic;
 
+import com.example.medic.MainPage.NewsModel;
 import com.example.medic.Models.EmailCode;
 import com.example.medic.Models.UserToken;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -19,7 +22,7 @@ public interface MedicApi {
     Call<UserToken> signIn(@Header("email") String email, @Header("code") Integer code);
 
     @GET("news")
-    Call<Void> getNews();
+    Call<List<NewsModel>> getNews();
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://medic.madskill.ru/api/")
