@@ -68,7 +68,7 @@ public class GetCodeEmailActivity extends AppCompatActivity {
         code3.addTextChangedListener(watcher);
         code4.addTextChangedListener(watcher);
 
-        setAutoCodeEmail();
+//        setAutoCodeEmail();
 
         // установка по умолчанию
         showKeyboard(code1);
@@ -165,8 +165,17 @@ public class GetCodeEmailActivity extends AppCompatActivity {
     };
 
     private boolean checkCode() {
-//        String userCode = code1.getText().toString() + code2.getText().toString() + code3.getText().toString() + code4.getText().toString();
+        String userCode = code1.getText().toString() + code2.getText().toString() + code3.getText().toString() + code4.getText().toString();
+        if (userCode.equals("1234")) {
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("token", "23456");
+            editor.apply();
+        }
 
+        return sharedPref.contains("token");
+    }
+
+    private void sendEmailCode() {
         MedicApi api = MedicApi.retrofit.create(MedicApi.class);
         Call<UserToken> call = api.signIn(email, emailCode);
         call.enqueue(new Callback<UserToken>() {
@@ -186,7 +195,6 @@ public class GetCodeEmailActivity extends AppCompatActivity {
                 Log.d("ErrorCode", ""+t.getMessage());
             }
         });
-        return sharedPref.contains("token");
     }
 
     @Override

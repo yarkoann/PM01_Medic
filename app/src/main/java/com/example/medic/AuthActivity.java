@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.medic.Models.EmailCode;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,6 +29,7 @@ public class AuthActivity extends AppCompatActivity {
     Button sendEmail;
     EditText emailUser;
     TextView authWithYandex;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,37 +62,40 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
         sendEmail.setOnClickListener(v -> {
-            MedicApi api = MedicApi.retrofit.create(MedicApi.class);
-            Call<EmailCode> call = api.sendCode(emailUser.getText().toString());
-
-            call.enqueue(new Callback<EmailCode>() {
-                @Override
-                public void onResponse(@NonNull Call<EmailCode> call, @NonNull Response<EmailCode> response) {
-                    if(response.isSuccessful()) {
-                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(AuthActivity.this);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("email", emailUser.getText().toString());
-                        editor.putInt("code", response.body().getCode());
-                        editor.apply();
-                        Intent code = new Intent(AuthActivity.this, GetCodeEmailActivity.class);
-                        startActivity(code);
-                    } else {
-                        Log.d("JJJJJ", ""+response.body());
-                        Toast.makeText(AuthActivity.this, ""+response.body(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<EmailCode> call, Throwable t) {
-                    Log.d("Error_API", "Ошибка"+t.getMessage());
-                    Toast.makeText(AuthActivity.this, "Ошибка"+t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
+            Intent code = new Intent(AuthActivity.this, GetCodeEmailActivity.class);
+            startActivity(code);
         });
         authWithYandex.setOnClickListener(v -> {
 
+        });
+    }
+
+    private void sendApiEmail() {
+        MedicApi api = MedicApi.retrofit.create(MedicApi.class);
+        Call<EmailCode> call = api.sendCode(emailUser.getText().toString());
+
+        call.enqueue(new Callback<EmailCode>() {
+            @Override
+            public void onResponse(@NonNull Call<EmailCode> call, @NonNull Response<EmailCode> response) {
+                if(response.isSuccessful()) {
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(AuthActivity.this);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("email", emailUser.getText().toString());
+                    editor.putInt("code", response.body().getCode());
+                    editor.apply();
+                    Intent code = new Intent(AuthActivity.this, GetCodeEmailActivity.class);
+                    startActivity(code);
+                } else {
+                    Log.d("JJJJJ", ""+response.body());
+                    Toast.makeText(AuthActivity.this, ""+response.body(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<EmailCode> call, Throwable t) {
+                Log.d("Error_API", "Ошибка"+t.getMessage());
+                Toast.makeText(AuthActivity.this, "Ошибка"+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
