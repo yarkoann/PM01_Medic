@@ -10,28 +10,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 
 import com.example.medic.Adapters.CatalogAdapter;
 import com.example.medic.Adapters.NewsAdapter;
-import com.example.medic.AnalogApi;
-import com.example.medic.MedicApi;
+import com.example.medic.Interface.AnalogApi;
 import com.example.medic.Models.Catalog;
 import com.example.medic.Models.News;
 import com.example.medic.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

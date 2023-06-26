@@ -16,9 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medic.Interface.MedicApi;
 import com.example.medic.Models.EmailCode;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

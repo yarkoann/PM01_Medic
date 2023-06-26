@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medic.Interface.MedicApi;
 import com.example.medic.Models.UserToken;
 
 import retrofit2.Call;

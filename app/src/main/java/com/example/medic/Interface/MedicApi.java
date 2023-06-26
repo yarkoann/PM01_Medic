@@ -1,8 +1,7 @@
-package com.example.medic;
+package com.example.medic.Interface;
 
-import com.example.medic.Models.Catalog;
-import com.example.medic.Models.EmailCode;
 import com.example.medic.Models.News;
+import com.example.medic.Models.EmailCode;
 import com.example.medic.Models.UserToken;
 
 import java.util.List;
@@ -14,15 +13,18 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-public interface AnalogApi {
+public interface MedicApi {
 
-    @GET("0090ce04-e1b9-487c-9f1e-9b35b3b26e99")
+    @POST("sendCode")
+    Call<EmailCode> sendCode(@Header("email") String email);
+
+    @POST("signin")
+    Call<UserToken> signIn(@Header("email") String email, @Header("code") Integer code);
+
+    @GET("news")
     Call<List<News>> getNews();
 
-    @GET("532c2674-f536-4b93-bd65-0a51d4de174d")
-    Call<List<Catalog>> getCatalog();
-
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://run.mocky.io/v3/")
+            .baseUrl("https://medic.madskill.ru/api/")
             .addConverterFactory(GsonConverterFactory.create()).build();
 }
